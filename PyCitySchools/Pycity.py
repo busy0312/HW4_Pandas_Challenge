@@ -38,7 +38,7 @@ district_summary = pd.DataFrame({"Total Schools": [length],
 #First result
 district_summary             
 
-name=school_data_complete.groupby("school_name")
+name=school_data_complete.groupby("school_name",sort=False)
 totalsize=name.size()
 totalbudget=name["budget"].first()
 totaltype=name['type'].first()
@@ -71,7 +71,7 @@ school_summary.sort_values(by='% Overall Passing Rate',ascending=True).head()
 
 #Math Scores by Grade
 
-grade9=school_data_complete[school_data_complete["grade"]=='9th'].groupby("school_name")
+grade9=school_data_complete[school_data_complete["grade"]=='9th'].groupby("school_name",sort=False)
 grade10=school_data_complete[school_data_complete["grade"]=='10th'].groupby("school_name")
 grade11=school_data_complete[school_data_complete["grade"]=='11th'].groupby("school_name")
 grade12=school_data_complete[school_data_complete["grade"]=='12th'].groupby("school_name")
