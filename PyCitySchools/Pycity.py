@@ -97,11 +97,6 @@ reading_summary=pd.DataFrame({"9th":av_reading9,
                               "12th":av_reading12,})
 reading_summary
 
-#Scores by School Spending
-# Sample bins. Feel free to create your own bins.
-spending_bins = [0, 585, 615, 645, 675]
-group_names = ["<$585", "$585-615", "$615-645", "$645-675"]
-
 #----------------to change the objects back to int
 school_summary=pd.DataFrame({"School Type": totaltype,
  "Total Students": totalsize,
@@ -113,6 +108,10 @@ school_summary=pd.DataFrame({"School Type": totaltype,
  "% Passing Reading":passreading,
  "% Overall Passing Rate":overall})
 #--------------------------------
+#Scores by School Spending
+# Sample bins. Feel free to create your own bins.
+spending_bins = [0, 585, 615, 645, 675]
+group_names = ["<$585", "$585-615", "$615-645", "$645-675"]
 #Scores by School Spending
 school_summary['Spending Ranges (Per Student)']=pd.cut(school_summary['Per Student Budget'],spending_bins,labels=group_names)
 
