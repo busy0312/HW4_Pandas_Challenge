@@ -68,6 +68,12 @@ school_summary.sort_values(by='% Overall Passing Rate',ascending=False).head()
 #third result
 school_summary.sort_values(by='% Overall Passing Rate',ascending=True).head()
 
+#to convert str back to int or float
+school_summary['Per Student Budget']=school_summary['Per Student Budget'].str.replace('$',' ',regex=True).astype(float)
+school_summary['Total Budget']=school_summary['Total Budget'].str.replace('$','',regex=True)
+school_summary['Total Budget']=school_summary['Total Budget'].str.replace(',','',regex=True)
+school_summary['Total Budget']=school_summary['Total Budget'].str.replace(' ','',regex=True)
+school_summary['Total Budget']=school_summary['Total Budget'].astype(int)
 
 #Math Scores by Grade
 
@@ -97,17 +103,7 @@ reading_summary=pd.DataFrame({"9th":av_reading9,
                               "12th":av_reading12,})
 reading_summary
 
-#----------------to change the objects back to int
-school_summary=pd.DataFrame({"School Type": totaltype,
- "Total Students": totalsize,
- "Total Budget":totalbudget,
- "Per Student Budget":perstudent,
- "Average Math Score": av_math,
-"Average Reading Score":av_reading,
- "% Passing Math":passmath,
- "% Passing Reading":passreading,
- "% Overall Passing Rate":overall})
-#--------------------------------
+
 #Scores by School Spending
 # Sample bins. Feel free to create your own bins.
 spending_bins = [0, 585, 615, 645, 675]
